@@ -1,15 +1,10 @@
 import axios from 'axios'
 
 export function getRecommend () {
-  const url = '/proxyApi/recommend'
-  const data = {
-    'order': 'comment',
-    'pagesize': 50
-  }
+  const url = '/api/index/ding.json'
 
-  return axios.get(url, {
-    params: data
-  }).then(res => {
-    return Promise.resolve(res)
-  })
+  return axios.get(url)
+    .then(res => {
+      return Promise.resolve(res)
+    })
 }

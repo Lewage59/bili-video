@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <scroll :data="recommendList" class="home-content">
-      <div>
+      <div v-if="recommendList">
         <div class="slider-wrapper">
           <swiper ref="mySwiper" :options="swiperOptions">
             <swiper-slide v-for="(item, index) in sliderImage" :key="index">
@@ -41,8 +41,9 @@ export default {
     }
   },
   created () {
-    this._getRecommend()
-    // this._getUserInfo()
+    setTimeout(() => {
+      this._getRecommend()
+    }, 20)
   },
   computed: {
     showSwiper () {
@@ -53,7 +54,12 @@ export default {
     _getRecommend () {
       getRecommend().then(res => {
         if (res.data.code === ERR_OK) {
-          this.recommendList = res.data.list
+          let tmp = Object.values(res.data)
+          for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+              this.recommendList.push(tmp[i][j])
+            }
+          }
         }
       }).catch(err => {
         console.log(err)

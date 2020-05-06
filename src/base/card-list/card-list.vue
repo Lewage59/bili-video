@@ -9,7 +9,7 @@
               <i class="icon-bofangshu"></i>{{(item.play || item.stat.view) | formatNumber}}
             </span>
             <span>
-              <i class="icon-danmushu"></i>{{(item.review || item.stat.danmaku) | formatNumber}}
+              <i class="icon-danmushu"></i>{{(item.video_review || item.stat.danmaku) | formatNumber}}
             </span>
           </div>
           <span class="duration">{{item.duration | formatTime}}</span>

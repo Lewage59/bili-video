@@ -1,13 +1,14 @@
 <template>
   <div class="suggest">
     <ul class="suggest-list">
-      <li class="suggest-item border-bottom" v-for="(item, index) in result" :key="index">{{item.name}}</li>
+      <li class="suggest-item border-bottom" v-for="(item, index) in result" :key="index" v-html="$options.filters.setHighlight(item.name, query)"></li>
     </ul>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import { getSuggest } from 'api/search'
+import { setHighlight } from 'common/js/util'
 
 export default {
   data () {
@@ -26,6 +27,11 @@ export default {
       getSuggest(this.query).then(res => {
         this.result = res.data
       })
+    }
+  },
+  filters: {
+    setHighlight (item, query) {
+      return setHighlight(query, item, 'ligh-hight')
     }
   },
   watch: {
@@ -49,6 +55,11 @@ export default {
       line-height: 44px;
       font-size: $font-size-medium;
       color: $color-text-comment;
+
+      &>>>.ligh-hight {
+        color: $color-theme;
+        font-style: normal;
+      }
     }
   }
 }
