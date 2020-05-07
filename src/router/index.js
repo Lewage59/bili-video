@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from 'components/index/index'
 import Home from 'components/home/home'
-import Channel from 'components/channel/channel'
+import ChannelView from 'components/channel-view/channel-view'
+import ChannelPage from 'components/channel-page/channel-page'
 import Video from 'components/video/video'
 import Search from 'components/search/search'
 
@@ -26,7 +27,13 @@ export default new Router({
         },
         {
           path: 'channel/:index',
-          component: Channel
+          component: ChannelView,
+          children: [
+            {
+              path: ':sindex',
+              component: ChannelPage
+            }
+          ]
         }
       ]
     },

@@ -1,7 +1,7 @@
 <template>
   <div class="switcher" ref="switcher" :class="switcherType">
     <div class="switcher-tab" v-for="(item, index) in list" :key="index" :class="{active : index === indexTab}" @click="switchTab(index)">
-      <span>{{item}}</span>
+      <span>{{item.name}}</span>
     </div>
     <div ref="anchor" class="switcher-header-anchor"></div>
   </div>
@@ -70,7 +70,7 @@ export default {
   }
 
   &.switcher-start {
-    text-align: left;
+    justify-content: flex-start;
   }
 
   .switcher-tab {
@@ -91,6 +91,7 @@ export default {
   .switcher-header-anchor {
     display: block;
     position: absolute;
+    width: 0;
     left: 0;
     bottom: 0;
     height: 2px;

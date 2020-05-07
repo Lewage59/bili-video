@@ -9,9 +9,23 @@ export const sliderImage = [
   'https://i0.hdslb.com/bfs/archive/68cb764e2a9060623f2678928588fd1d5b3aae75.png@480w_270h'
 ]
 
-export const categoryTypes = [
-  { name: '首页', key: 0 },
-  { name: '动画', key: 1 },
+export const regionTags = [
+  {
+    name: '首页',
+    key: 0
+  },
+  {
+    name: '动画',
+    key: 1,
+    blocks: [
+      { name: '推荐', key: 1 },
+      { name: 'MAD·AMV', key: 24 },
+      { name: 'MMD·3D', key: 25 },
+      { name: '短片·手书·配音', key: 47 },
+      { name: '特摄', key: 86 },
+      { name: '综合', key: 27 }
+    ]
+  },
   { name: '番剧', key: 13 },
   { name: '国创', key: 167 },
   { name: '音乐', key: 3 },
@@ -31,5 +45,3 @@ export const categoryTypes = [
   { name: '直播', key: -1 },
   { name: '相簿', key: -2 }
 ]
-
-export const switchList = ['首页', '动画', '番剧', '国创', '音乐', '舞蹈', '游戏', '科技', '数码', '生活', '鬼畜', '时尚', '娱乐', '影视', '广告', '纪录片', '电影', '电视剧', '直播', '相簿']

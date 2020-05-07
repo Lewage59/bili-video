@@ -92,7 +92,7 @@ export default {
     padding: 0 12px;
     z-index: 2;
     box-sizing: border-box;
-    background: $color-background;
+    background: $color-theme;
 
     .search-box-wrapper {
       flex: 1;
@@ -104,7 +104,7 @@ export default {
       display: inline-block;
       line-height: 44px;
       font-size: $font-size-medium-x;
-      color: $color-theme;
+      color: $color-icon;
     }
   }
 

@@ -17,7 +17,7 @@
         <div class="channel-menu border-bottom">
           <div class="switcher">
             <slider class="switcher-wrapper">
-              <switcher :list="switchList" displayType="start" :indexTab="indexTab" @switchTab="changeContent"></switcher>
+              <switcher :list="regionTags" displayType="start" :indexTab="indexTab" @switchTab="changeContent"></switcher>
             </slider>
             <div class="tab-more" @click="toggleList">
               <i class="icon-bottom"></i>
@@ -26,8 +26,8 @@
           <transition name="sliderTab">
             <div class="drawer" v-show="toggleTab" @click="toggleList">
               <ul @click.stop>
-                <li v-for="(item, index) in switchList" :key="index" class="tab-item" :class="{ active: index === indexTab }" @click="changeContent(index)">
-                  <span>{{item}}</span>
+                <li v-for="(item, index) in regionTags" :key="index" class="tab-item" :class="{ active: index === indexTab }" @click="changeContent(index)">
+                  <span>{{item.name}}</span>
                 </li>
                 <i class="icon-top" @click="toggleList"></i>
                 <div class="mask"></div>
@@ -46,14 +46,14 @@
 import Slider from 'base/slider/slider'
 import Switcher from 'base/switcher/switcher'
 import noface from 'common/image/noface.gif'
-import { switchList, ERR_OK } from 'api/config'
+import { ERR_OK, regionTags } from 'api/config'
 import { getSearchDefaultWords } from 'api/search'
 
 export default {
   data () {
     return {
       noface,
-      switchList,
+      regionTags,
       defaultWord: '',
       toggleTab: false
     }

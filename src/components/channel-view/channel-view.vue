@@ -1,0 +1,200 @@
+<template>
+  <div class="channel">
+    <div class="sub-channel-menu border-bottom">
+      <slider class="switcher-wrapper">
+        <switcher :list="regionTags[indexTab].blocks" displayType="start" :indexTab="sindexTab" @switchTab="changeContent"></switcher>
+      </slider>
+    </div>
+    <ul class="recommend" v-if="sindexTab === 0 && JSON.stringify(regionList) !== '{}'">
+      <li class="list-group" v-for="(list, index) in regionList" :key="index">
+        <div class="list-bar">
+          <span class="title">{{getRegionName(index)}}</span>
+          <span class="rank-more" v-if="index === 0">
+            <i class="icon-paixingbang"></i>
+            排行榜
+            <i class="icon-youjiantou"></i>
+          </span>
+          <span class="more" v-else @click="toMore(index)">
+            查看更多
+            <i class="icon-youjiantou"></i>
+          </span>
+        </div>
+        <div class="list-group-item">
+          <card-list @select="selectItem" :list="list"></card-list>
+        </div>
+      </li>
+    </ul>
+    <div class="loading-container" v-show="JSON.stringify(regionList) === '{}'">
+      <loading title=""></loading>
+    </div>
+    <router-view @switchTab="switchTab" :indexTab="indexTab"></router-view>
+  </div>
+</template>
+
+<script type="text/ecmascirpt-6">
+import { regionTags, ERR_OK } from 'api/config'
+import { getRegion } from 'api/partition'
+import Slider from 'base/slider/slider'
+import Switcher from 'base/switcher/switcher'
+import cardList from 'base/card-list/card-list'
+import Loading from 'base/loading/loading'
+
+export default {
+  data () {
+    return {
+      indexTab: 0,
+      sindexTab: 0,
+      regionTags: regionTags,
+      regionList: []
+    }
+  },
+  created () {
+    this._getIndexTab()
+    setTimeout(() => {
+      this._getRegion()
+    }, 20)
+  },
+  methods: {
+    _getIndexTab () {
+      if (isNaN(this.$route.params.index)) {
+        this.indexTab = 0
+        this.sindexTab = 0
+      } else {
+        this.indexTab = this.$route.params.index
+      }
+      this.$emit('switchTab', parseInt(this.indexTab))
+    },
+    _getRegion () {
+      let arr = []
+      let index = parseInt(this.indexTab)
+      let blocks = this.regionTags[index].blocks
+      // 确保异步请求按规定顺序执行
+      blocks.forEach(item => {
+        arr.push(getRegion(-1, item.key))
+      })
+      Promise.all(arr).then(res => {
+        res.forEach(item => {
+          if (item.data.code === ERR_OK) {
+            item.data.data.archives.length = 4
+            this.regionList.push(item.data.data.archives)
+          }
+        })
+      })
+    },
+    changeContent (index) {
+      if (index === 0) {
+        this.sindexTab = 0
+        this.$router.push({
+          path: `/channel/${this.indexTab}`
+        })
+      } else {
+        this.$router.push({
+          path: `/channel/${this.indexTab}/${index}`
+        })
+      }
+    },
+    switchTab (index) {
+      this.sindexTab = index
+    },
+    selectItem (item) {
+      this.$router.push({ name: 'video', params: { bvid: item.bvid } })
+    },
+    getRegionName (index) {
+      if (!this.indexTab) {
+        return
+      }
+      return this.regionTags[this.indexTab].blocks[index].name
+    },
+    toMore (index) {
+      this.$router.push({
+        path: `/channel/${this.indexTab}/${index}`
+      })
+    }
+  },
+  watch: {
+    '$route' () {
+      this._getIndexTab()
+    }
+  },
+  components: {
+    Slider,
+    Switcher,
+    cardList,
+    Loading
+  }
+}
+</script>
+
+<style lang="stylus" scoped rel="stylesheet/stylus">
+@import '~common/stylus/variable.styl';
+
+.channel {
+  .sub-channel-menu {
+    height: 40.5px;
+
+    .switcher-wrapper {
+      position: fixed;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      z-index: 99;
+      white-space: nowrap;
+      background: $color-background;
+    }
+
+    .tab-more {
+      flex: 0 0 40px;
+      height: 22px;
+      line-height: 22px;
+      margin-top: 5px;
+      text-align: center;
+      z-index: 1;
+
+      .icon-bottom {
+        width: 40px;
+        color: #aaa;
+      }
+    }
+  }
+
+  .recommend {
+    padding-top: 10px;
+    font-size: $font-size-medium-x;
+    color: $color-text;
+
+    .list-group {
+      padding: 0 5px;
+      margin-bottom: 20px;
+
+      .list-bar {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        font-size: $font-size-medium;
+
+        .title {
+          font-size: 15px;
+        }
+
+        .rank-more {
+          color: #ffa726;
+        }
+
+        .more {
+          color: $color-text-video;
+        }
+      }
+
+      .list-group-item {
+      }
+    }
+  }
+
+  .loading-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+</style>

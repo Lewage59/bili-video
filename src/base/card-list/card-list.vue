@@ -6,10 +6,10 @@
         <div class="count">
           <div class="left">
             <span>
-              <i class="icon-bofangshu"></i>{{(item.play || item.stat.view) | formatNumber}}
+              <i class="icon-bofangshu"></i>{{item.stat.view | formatNumber}}
             </span>
             <span>
-              <i class="icon-danmushu"></i>{{(item.video_review || item.stat.danmaku) | formatNumber}}
+              <i class="icon-danmushu"></i>{{item.stat.danmaku | formatNumber}}
             </span>
           </div>
           <span class="duration">{{item.duration | formatTime}}</span>
@@ -41,11 +41,7 @@ export default {
       return formatNumber(num)
     },
     formatTime (duration) {
-      if (isNaN(duration)) {
-        return duration
-      } else {
-        return formatTime(duration)
-      }
+      return formatTime(duration)
     }
   }
 }

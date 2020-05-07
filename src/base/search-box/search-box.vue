@@ -51,25 +51,24 @@ export default {
   height: 30px;
   padding: 0 12px;
   margin-top: 7px;
-  background: $color-background-tag;
-  border-radius: 3px;
+  background: $color-background;
+  border-radius: 30px;
+  color: $color-text-c;
 
   .icon-sousuo {
     font-size: $font-size-medium-x;
-    color: #a0a0a0;
   }
 
   .box {
     flex: 1;
     margin: 0 5px;
     font-size: $font-size-small-x;
-    background: $color-background-tag;
+    background: $color-background;
     border: none;
     outline: medium;
   }
 
   .icon-shanchu {
-    color: #a0a0a0;
     font-size: $font-size-medium;
   }
 }

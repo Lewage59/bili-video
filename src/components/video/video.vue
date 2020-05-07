@@ -170,7 +170,7 @@ export default {
       })
     },
     _setSwitchList () {
-      this.switchList = ['相关推荐', `评论 ${formatNumber(this.statCount.reply)}`]
+      this.switchList = [{ name: '相关推荐' }, { name: `评论 ${formatNumber(this.statCount.reply)}` }]
     },
     back () {
       this.$router.go(-1)
