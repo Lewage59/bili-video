@@ -5,29 +5,34 @@
         <switcher :list="getBlocks" displayType="start" :indexTab="sindexTab" @switchTab="changeContent"></switcher>
       </slider>
     </div>
-    <ul class="recommend" v-if="sindexTab === 0 && regionList">
-      <li class="list-group" v-for="(list, index) in regionList" :key="index">
-        <div class="list-bar">
-          <span class="title">{{getRegionName(index)}}</span>
-          <span class="rank-more" v-if="index === 0">
-            <i class="icon-paixingbang"></i>
-            排行榜
-            <i class="icon-youjiantou"></i>
-          </span>
-          <span class="more" v-else @click="toMore(index)">
-            查看更多
-            <i class="icon-youjiantou"></i>
-          </span>
+    <scroll class="content-wrapper" ref="content" :data="sindexTab" :bounce="bounce">
+      <div>
+        <ul class="recommend" v-if="sindexTab === 0 && regionList">
+          <li class="list-group" v-for="(list, index) in regionList" :key="index">
+            <div class="list-bar">
+              <span class="title">{{getRegionName(index)}}</span>
+              <span class="rank-more" v-if="index === 0">
+                <i class="icon-paixingbang"></i>
+                排行榜
+                <i class="icon-youjiantou"></i>
+              </span>
+              <span class="more" v-else @click="toMore(index)">
+                查看更多
+                <i class="icon-youjiantou"></i>
+              </span>
+            </div>
+            <div class="list-group-item">
+              <card-list @select="selectItem" :list="list"></card-list>
+            </div>
+          </li>
+        </ul>
+        <div class="loading-container" v-show="!regionList">
+          <loading title=""></loading>
         </div>
-        <div class="list-group-item">
-          <card-list @select="selectItem" :list="list"></card-list>
-        </div>
-      </li>
-    </ul>
-    <div class="loading-container" v-show="!regionList">
-      <loading title=""></loading>
-    </div>
-    <router-view @sswitchTab="sswitchTab" :indexTab="indexTab"></router-view>
+        <router-view @sswitchTab="sswitchTab" :indexTab="indexTab"></router-view>
+        <div class="block-box"></div>
+      </div>
+    </scroll>
   </div>
 </template>
 
@@ -38,6 +43,7 @@ import Slider from 'base/slider/slider'
 import Switcher from 'base/switcher/switcher'
 import cardList from 'base/card-list/card-list'
 import Loading from 'base/loading/loading'
+import Scroll from 'base/scroll/scroll'
 
 export default {
   data () {
@@ -49,6 +55,7 @@ export default {
     }
   },
   created () {
+    this.bounce = false
     this._getIndexTab()
     setTimeout(() => {
       this._getRegion()
@@ -102,6 +109,7 @@ export default {
       }
     },
     sswitchTab (index) {
+      this.$refs.content.scrollTo(0, 0)
       this.sindexTab = index
     },
     selectItem (item) {
@@ -135,7 +143,8 @@ export default {
     Slider,
     Switcher,
     cardList,
-    Loading
+    Loading,
+    Scroll
   }
 }
 </script>
@@ -143,7 +152,14 @@ export default {
 <style lang="stylus" scoped rel="stylesheet/stylus">
 @import '~common/stylus/variable.styl';
 
+.block-box {
+  width: 100%;
+  padding-top: 130px;
+}
+
 .channel {
+  position: relative;
+
   .sub-channel-menu {
     height: 40.5px;
 
@@ -172,44 +188,50 @@ export default {
     }
   }
 
-  .recommend {
-    padding-top: 10px;
-    font-size: $font-size-medium-x;
-    color: $color-text;
+  .content-wrapper {
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
 
-    .list-group {
-      padding: 0 5px;
-      margin-bottom: 20px;
+    .recommend {
+      padding-top: 10px;
+      font-size: $font-size-medium-x;
+      color: $color-text;
 
-      .list-bar {
-        display: flex;
-        justify-content: space-between;
-        padding: 5px 10px;
-        font-size: $font-size-medium;
+      .list-group {
+        padding: 0 5px;
+        margin-bottom: 20px;
 
-        .title {
-          font-size: 15px;
+        .list-bar {
+          display: flex;
+          justify-content: space-between;
+          padding: 5px 10px;
+          font-size: $font-size-medium;
+
+          .title {
+            font-size: 15px;
+          }
+
+          .rank-more {
+            color: #ffa726;
+          }
+
+          .more {
+            color: $color-text-video;
+          }
         }
 
-        .rank-more {
-          color: #ffa726;
+        .list-group-item {
         }
-
-        .more {
-          color: $color-text-video;
-        }
-      }
-
-      .list-group-item {
       }
     }
-  }
 
-  .loading-container {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
+    .loading-container {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 </style>

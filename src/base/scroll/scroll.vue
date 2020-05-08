@@ -10,7 +10,7 @@ import BScroll from 'better-scroll'
 export default {
   props: {
     data: {
-      type: Array,
+      type: Array | Number,
       default: null
     },
     probeType: { // 触发滚动事件的类型

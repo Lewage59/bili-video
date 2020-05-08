@@ -77,18 +77,143 @@ export const regionTags = [
       { name: '舞蹈教程', key: 156 }
     ]
   },
-  { name: '游戏', key: 4 },
-  { name: '科技', key: 36 },
-  { name: '数码', key: 188 },
-  { name: '生活', key: 160 },
-  { name: '鬼畜', key: 119 },
-  { name: '时尚', key: 155 },
-  { name: '娱乐', key: 5 },
-  { name: '影视', key: 181 },
-  { name: '广告', key: 165 },
-  { name: '纪录片', key: 177 },
-  { name: '电影', key: 23 },
-  { name: '电视剧', key: 11 },
+  {
+    name: '游戏',
+    key: 4,
+    blocks: [
+      { name: '推荐', key: 4 },
+      { name: '单机游戏', key: 17 },
+      { name: '电子竞技', key: 171 },
+      { name: '手机游戏', key: 172 },
+      { name: '网络游戏', key: 65 },
+      { name: '桌游棋牌', key: 173 },
+      { name: 'GMV', key: 121 },
+      { name: '音游', key: 136 },
+      { name: 'Mugen', key: 19 }
+    ]
+  },
+  {
+    name: '科技',
+    key: 36,
+    blocks: [
+      { name: '推荐', key: 36 },
+      { name: '科学科普', key: 201 },
+      { name: '社科人文', key: 124 },
+      { name: '野生技术协会', key: 122 },
+      { name: '演讲·公开课', key: 39 },
+      { name: '星海', key: 96 },
+      { name: '机械', key: 98 },
+      { name: '汽车', key: 176 }
+    ]
+  },
+  {
+    name: '数码',
+    key: 188,
+    blocks: [
+      { name: '推荐', key: 188 },
+      { name: '手机平板', key: 95 },
+      { name: '电脑装机', key: 189 },
+      { name: '摄影摄像', key: 190 },
+      { name: '影音智能', key: 191 }
+    ]
+  },
+  {
+    name: '生活',
+    key: 160,
+    blocks: [
+      { name: '推荐', key: 160 },
+      { name: '搞笑', key: 138 },
+      { name: '日常', key: 21 },
+      { name: '美食圈', key: 76 },
+      { name: '动物圈', key: 75 },
+      { name: '手工', key: 161 },
+      { name: '绘画', key: 162 },
+      { name: '运动', key: 163 },
+      { name: '其他', key: 174 }
+    ]
+  },
+  {
+    name: '鬼畜',
+    key: 119,
+    blocks: [
+      { name: '推荐', key: 119 },
+      { name: '鬼畜调教', key: 22 },
+      { name: '音MAD', key: 26 },
+      { name: '人力VOCALOID', key: 126 },
+      { name: '教程演示', key: 127 }
+    ]
+  },
+  {
+    name: '时尚',
+    key: 155,
+    blocks: [
+      { name: '推荐', key: 155 },
+      { name: '美妆', key: 157 },
+      { name: '服饰', key: 158 },
+      { name: '健身', key: 164 },
+      { name: 'T台', key: 159 },
+      { name: '风尚标', key: 192 }
+    ]
+  },
+  {
+    name: '娱乐',
+    key: 5,
+    blocks: [
+      { name: '推荐', key: 5 },
+      { name: '综艺', key: 71 },
+      { name: '明星', key: 137 },
+      { name: 'Korea相关', key: 131 }
+    ]
+  },
+  {
+    name: '影视',
+    key: 181,
+    blocks: [
+      { name: '推荐', key: 181 },
+      { name: '影视杂谈', key: 182 },
+      { name: '影视剪辑', key: 183 },
+      { name: '短片', key: 85 },
+      { name: '预告·资讯', key: 184 }
+    ]
+  },
+  {
+    name: '广告',
+    key: 165,
+    blocks: [
+      { name: '推荐', key: 165 }
+    ]
+  },
+  {
+    name: '纪录片',
+    key: 177,
+    blocks: [
+      { name: '推荐', key: 177 },
+      { name: '人文·历史', key: 37 },
+      { name: '科学·探索·自然', key: 178 },
+      { name: '军事', key: 179 },
+      { name: '社会·美食·旅行', key: 180 }
+    ]
+  },
+  {
+    name: '电影',
+    key: 23,
+    blocks: [
+      { name: '推荐', key: 23 },
+      { name: '华语电影', key: 147 },
+      { name: '欧美电影', key: 145 },
+      { name: '日本电影', key: 146 },
+      { name: '其他国家', key: 83 }
+    ]
+  },
+  {
+    name: '电视剧',
+    key: 11,
+    blocks: [
+      { name: '推荐', key: 11 },
+      { name: '国产剧', key: 185 },
+      { name: '海外剧', key: 187 }
+    ]
+  },
   { name: '直播', key: -1 },
   { name: '相簿', key: -2 }
 ]
