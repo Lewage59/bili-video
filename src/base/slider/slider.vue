@@ -8,24 +8,25 @@
 import BScroll from 'better-scroll'
 
 export default {
+  props: {
+    data: {
+      type: Array,
+      default: () => []
+    }
+  },
   mounted () {
     setTimeout(() => {
-      this._setSliderWidth()
       this._initScroll()
-    }, 20)
+    }, 200)
+    // 当窗口大小发生变化是重新计算宽度
+    window.addEventListener('resize', () => {
+      if (!this.scroll) {
+        return
+      }
+      this.scroll.refresh()
+    })
   },
   methods: {
-    _setSliderWidth () {
-      this.children = this.$refs.wrapper.children[0].children
-      let width = 0
-
-      for (let i = 0; i < this.children.length; i++) {
-        let child = this.children[i]
-        width += child.clientWidth
-      }
-
-      this.$refs.wrapper.children[0].style.width = width + 'px'
-    },
     _initScroll () {
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: true,
@@ -34,6 +35,9 @@ export default {
         momentum: false,
         bounce: false
       })
+    },
+    refresh () {
+      this.scroll && this.scroll.refresh()
     },
     scrollTo () {
       this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)

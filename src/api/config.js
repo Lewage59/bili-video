@@ -69,12 +69,12 @@ export const regionTags = [
     key: 129,
     blocks: [
       { name: '推荐', key: 129 },
-      { name: '宅舞', key: 3 },
-      { name: '推荐', key: 3 },
-      { name: '推荐', key: 3 },
-      { name: '推荐', key: 3 },
-      { name: '推荐', key: 3 },
-      { name: '推荐', key: 3 }
+      { name: '宅舞', key: 20 },
+      { name: '街舞', key: 198 },
+      { name: '明星舞蹈', key: 199 },
+      { name: '中国舞', key: 200 },
+      { name: '舞蹈综合', key: 154 },
+      { name: '舞蹈教程', key: 156 }
     ]
   },
   { name: '游戏', key: 4 },

@@ -35,18 +35,18 @@ export default {
     }
   },
   created () {
-    this._getIndexTab()
+    this._getsIndexTab()
   },
   methods: {
-    _getIndexTab () {
+    _getsIndexTab () {
       if (isNaN(this.$route.params.sindex)) {
         return
       }
       this.sindexTab = this.$route.params.sindex
-      this.$emit('switchTab', parseInt(this.sindexTab))
-      this._getRegion()
+      this.$emit('sswitchTab', parseInt(this.sindexTab))
+      this._getsRegion()
     },
-    _getRegion () {
+    _getsRegion () {
       let index = parseInt(this.indexTab)
       let sindex = parseInt(this.sindexTab)
       let rid = this.regionTags[index].blocks[sindex].key
@@ -64,7 +64,7 @@ export default {
   },
   watch: {
     '$route' () {
-      this._getIndexTab()
+      this._getsIndexTab()
     }
   },
   components: {

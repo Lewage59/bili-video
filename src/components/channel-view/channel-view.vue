@@ -1,8 +1,8 @@
 <template>
   <div class="channel">
     <div class="sub-channel-menu border-bottom">
-      <slider class="switcher-wrapper">
-        <switcher :list="regionTags[indexTab].blocks" displayType="start" :indexTab="sindexTab" @switchTab="changeContent"></switcher>
+      <slider class="switcher-wrapper" :data="getBlocks">
+        <switcher :list="getBlocks" displayType="start" :indexTab="sindexTab" @switchTab="changeContent"></switcher>
       </slider>
     </div>
     <ul class="recommend" v-if="sindexTab === 0 && regionList">
@@ -27,7 +27,7 @@
     <div class="loading-container" v-show="!regionList">
       <loading title=""></loading>
     </div>
-    <router-view @switchTab="switchTab" :indexTab="indexTab"></router-view>
+    <router-view @sswitchTab="sswitchTab" :indexTab="indexTab"></router-view>
   </div>
 </template>
 
@@ -54,6 +54,11 @@ export default {
       this._getRegion()
     }, 20)
   },
+  computed: {
+    getBlocks () {
+      return regionTags[this.indexTab].blocks
+    }
+  },
   methods: {
     _getIndexTab () {
       if (isNaN(this.$route.params.index)) {
@@ -65,6 +70,9 @@ export default {
       this.$emit('switchTab', parseInt(this.indexTab))
     },
     _getRegion () {
+      if (!this.indexTab) {
+        return
+      }
       let arr = []
       let index = parseInt(this.indexTab)
       let blocks = this.regionTags[index].blocks
@@ -93,7 +101,7 @@ export default {
         })
       }
     },
-    switchTab (index) {
+    sswitchTab (index) {
       this.sindexTab = index
     },
     selectItem (item) {
@@ -113,7 +121,14 @@ export default {
   },
   watch: {
     '$route' () {
-      this._getIndexTab()
+      let routeIndex = this.$route.params.index
+      if (this.indexTab !== routeIndex) {
+        this._getIndexTab()
+        this.regionList = []
+        setTimeout(() => {
+          this._getRegion()
+        }, 20)
+      }
     }
   },
   components: {

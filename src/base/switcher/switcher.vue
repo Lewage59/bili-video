@@ -62,11 +62,12 @@ export default {
 
 .switcher {
   position: relative;
-  display: flex;
-  flex-direction: row;
+  display: inline-block;
   font-size: $font-size-medium;
 
   &.switcher-around {
+    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
   }
 

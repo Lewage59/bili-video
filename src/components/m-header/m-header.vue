@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="channel-menu border-bottom">
-          <div class="switcher">
+          <div class="affix">
             <slider class="switcher-wrapper" ref="slider">
               <switcher :list="regionTags" displayType="start" :indexTab="indexTab" @switchTab="changeContent"></switcher>
             </slider>
@@ -175,7 +175,7 @@ export default {
         height: 40.5px;
         width: 100%;
 
-        .switcher {
+        .affix {
           display: flex;
           align-items: center;
           background-color: #ffffff;
