@@ -26,10 +26,57 @@ export const regionTags = [
       { name: '综合', key: 27 }
     ]
   },
-  { name: '番剧', key: 13 },
-  { name: '国创', key: 167 },
-  { name: '音乐', key: 3 },
-  { name: '舞蹈', key: 129 },
+  {
+    name: '番剧',
+    key: 13,
+    blocks: [
+      { name: '推荐', key: 13 },
+      { name: '连载动画', key: 33 },
+      { name: '完结动画', key: 32 },
+      { name: '资讯', key: 51 },
+      { name: '官方延伸', key: 152 }
+    ]
+  },
+  {
+    name: '国创',
+    key: 167,
+    blocks: [
+      { name: '推荐', key: 167 },
+      { name: '国产动画', key: 153 },
+      { name: '国产原创相关', key: 168 },
+      { name: '布袋戏', key: 169 },
+      { name: '动态漫·广播剧', key: 195 },
+      { name: '资讯', key: 170 }
+    ]
+  },
+  {
+    name: '音乐',
+    key: 3,
+    blocks: [
+      { name: '推荐', key: 3 },
+      { name: '原创音乐', key: 28 },
+      { name: '翻唱', key: 31 },
+      { name: 'VOCALOID·UTAU', key: 30 },
+      { name: '电音', key: 194 },
+      { name: '演奏', key: 59 },
+      { name: 'MV', key: 193 },
+      { name: '音乐现场', key: 29 },
+      { name: '音乐综合', key: 130 }
+    ]
+  },
+  {
+    name: '舞蹈',
+    key: 129,
+    blocks: [
+      { name: '推荐', key: 129 },
+      { name: '宅舞', key: 3 },
+      { name: '推荐', key: 3 },
+      { name: '推荐', key: 3 },
+      { name: '推荐', key: 3 },
+      { name: '推荐', key: 3 },
+      { name: '推荐', key: 3 }
+    ]
+  },
   { name: '游戏', key: 4 },
   { name: '科技', key: 36 },
   { name: '数码', key: 188 },

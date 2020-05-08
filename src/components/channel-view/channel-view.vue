@@ -5,7 +5,7 @@
         <switcher :list="regionTags[indexTab].blocks" displayType="start" :indexTab="sindexTab" @switchTab="changeContent"></switcher>
       </slider>
     </div>
-    <ul class="recommend" v-if="sindexTab === 0 && JSON.stringify(regionList) !== '{}'">
+    <ul class="recommend" v-if="sindexTab === 0 && regionList">
       <li class="list-group" v-for="(list, index) in regionList" :key="index">
         <div class="list-bar">
           <span class="title">{{getRegionName(index)}}</span>
@@ -24,7 +24,7 @@
         </div>
       </li>
     </ul>
-    <div class="loading-container" v-show="JSON.stringify(regionList) === '{}'">
+    <div class="loading-container" v-show="!regionList">
       <loading title=""></loading>
     </div>
     <router-view @switchTab="switchTab" :indexTab="indexTab"></router-view>
@@ -58,9 +58,9 @@ export default {
     _getIndexTab () {
       if (isNaN(this.$route.params.index)) {
         this.indexTab = 0
-        this.sindexTab = 0
       } else {
         this.indexTab = this.$route.params.index
+        this.sindexTab = 0
       }
       this.$emit('switchTab', parseInt(this.indexTab))
     },

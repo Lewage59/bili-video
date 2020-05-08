@@ -17,12 +17,12 @@
             <div class="time">{{item.ctime | formatDate}}</div>
             <div class="content">{{item.content.message}}</div>
           </div>
-          <div class="reply-preview">
+          <div class="reply-preview" v-if="item.replies">
             <p class="preview-item" v-for="(reply, key) in item.replies" :key="key">
               <span class="name">{{reply.member.uname + '：'}}</span>
               <span class="content">{{reply.content.message}}</span>
             </p>
-            <div class="show-more">
+            <div class="show-more" v-if="item.rcount > 3">
               <span>{{'共' + item.rcount + '条回复'}}</span>
               <i class="icon-youjiantou"></i>
             </div>

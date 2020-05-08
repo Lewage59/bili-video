@@ -16,7 +16,7 @@
         </div>
         <div class="channel-menu border-bottom">
           <div class="switcher">
-            <slider class="switcher-wrapper">
+            <slider class="switcher-wrapper" ref="slider">
               <switcher :list="regionTags" displayType="start" :indexTab="indexTab" @switchTab="changeContent"></switcher>
             </slider>
             <div class="tab-more" @click="toggleList">

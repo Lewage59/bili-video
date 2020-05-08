@@ -37,7 +37,6 @@ export default {
     switchTab (index) {
       if (this.indexTab !== index) {
         this.$emit('switchTab', index)
-        this.moveAnchor(index)
       }
     },
     moveAnchor (index) {
@@ -48,8 +47,10 @@ export default {
   },
   watch: {
     indexTab (newIndex) {
-      if (newIndex) {
-        this.moveAnchor(newIndex)
+      if (newIndex || newIndex === 0) {
+        setTimeout(() => {
+          this.moveAnchor(newIndex)
+        }, 20)
       }
     }
   }

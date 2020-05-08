@@ -1,6 +1,6 @@
 <template>
-  <div class="channel-page">
-    <div class="content" v-if="regionList">
+  <div class="channel-page" v-if="regionList.length">
+    <div class="content">
       <div class="list-bar">
         <span class="title">热门推荐</span>
       </div>
