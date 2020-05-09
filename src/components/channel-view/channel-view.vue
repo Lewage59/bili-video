@@ -11,7 +11,7 @@
           <li class="list-group" v-for="(list, index) in regionList" :key="index">
             <div class="list-bar">
               <span class="title">{{getRegionName(index)}}</span>
-              <span class="rank-more" v-if="index === 0">
+              <span class="rank-more" v-if="index === 0" @click="toRank()">
                 <i class="icon-paixingbang"></i>
                 排行榜
                 <i class="icon-youjiantou"></i>
@@ -109,7 +109,7 @@ export default {
       }
     },
     sswitchTab (index) {
-      this.$refs.content.scrollTo(0, 0)
+      this.$refs.content.scrollTo(0, 0, 500)
       this.sindexTab = index
     },
     selectItem (item) {
@@ -125,6 +125,9 @@ export default {
       this.$router.push({
         path: `/channel/${this.indexTab}/${index}`
       })
+    },
+    toRank () {
+      this.$router.push({ path: `/rank/${this.indexTab}` })
     }
   },
   watch: {
@@ -171,20 +174,6 @@ export default {
       z-index: 99;
       white-space: nowrap;
       background: $color-background;
-    }
-
-    .tab-more {
-      flex: 0 0 40px;
-      height: 22px;
-      line-height: 22px;
-      margin-top: 5px;
-      text-align: center;
-      z-index: 1;
-
-      .icon-bottom {
-        width: 40px;
-        color: #aaa;
-      }
     }
   }
 

@@ -6,6 +6,8 @@ import ChannelView from 'components/channel-view/channel-view'
 import ChannelPage from 'components/channel-page/channel-page'
 import Video from 'components/video/video'
 import Search from 'components/search/search'
+import Rank from 'components/rank/rank'
+import VideoList from 'components/video-list/video-list'
 
 Vue.use(Router)
 
@@ -46,6 +48,17 @@ export default new Router({
       name: 'search',
       path: '/search',
       component: Search
+    },
+    {
+      name: 'rank',
+      path: '/rank',
+      component: Rank,
+      children: [
+        {
+          path: ':index',
+          component: VideoList
+        }
+      ]
     }
   ]
 })
