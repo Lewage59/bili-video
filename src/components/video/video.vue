@@ -7,7 +7,7 @@
             <i class="icon-zuojiantou1"></i>
           </div>
           <router-link tag="div" to="/" class="logo ">
-            <i class="icon-bilibili"></i>
+            <i class="icon-bilibili-line"></i>
           </router-link>
         </div>
       </div>
@@ -273,7 +273,7 @@ export default {
       transform: translateX(-50%);
       display: inline-block;
 
-      .icon-bilibili {
+      .icon-bilibili-line {
         color: $color-icon;
         font-size: 27px;
         vertical-align: middle;

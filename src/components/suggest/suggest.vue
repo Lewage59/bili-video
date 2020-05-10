@@ -1,7 +1,7 @@
 <template>
   <div class="suggest">
     <ul class="suggest-list">
-      <li class="suggest-item border-bottom" v-for="(item, index) in result" :key="index" v-html="$options.filters.setHighlight(item.name, query)"></li>
+      <li class="suggest-item border-bottom" @click="selectItem" v-for="(item, index) in result" :key="index" v-html="$options.filters.setHighlight(item.name, query)"></li>
     </ul>
   </div>
 </template>
@@ -24,9 +24,15 @@ export default {
   },
   methods: {
     search () {
+      if (!this.query) {
+        return
+      }
       getSuggest(this.query).then(res => {
         this.result = res.data
       })
+    },
+    selectItem () {
+      this.$emit('select')
     }
   },
   filters: {
@@ -46,7 +52,7 @@ export default {
 @import '~common/stylus/variable.styl';
 
 .suggest {
-  padding: 44px 0 0 12px;
+  padding-left: 12px;
   background: $color-background;
 
   .suggest-list {

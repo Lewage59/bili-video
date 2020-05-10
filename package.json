@@ -15,10 +15,12 @@
     "babel-runtime": "^6.26.0",
     "better-scroll": "^1.15.2",
     "fastclick": "^1.0.6",
+    "good-storage": "^1.1.1",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",
     "vue-lazyload": "^1.3.3",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.3.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

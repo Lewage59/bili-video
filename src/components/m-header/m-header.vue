@@ -4,7 +4,7 @@
       <div class="suspension-box">
         <div class="navbar">
           <div class="logo">
-            <i class="icon-bilibili"></i>
+            <i class="icon-theme"></i>
           </div>
           <router-link tag="div" to="/search" class="search-wrapper">
             <i class="icon-sousuo"></i>
@@ -127,22 +127,21 @@ export default {
         background-color: $color-theme;
 
         .logo {
-          flex: 0 0 61px;
-
-          .icon-bilibili {
+          .icon-theme {
             color: $color-icon;
-            font-size: 27px;
+            font-size: 24px;
             vertical-align: middle;
           }
         }
 
         .search-wrapper {
+          flex: 1;
           display: flex;
           align-items: center;
           height: 30px;
           width: 200px;
           padding: 0 10px;
-          margin-top: 7px;
+          margin: 7px 15px;
           border-radius: 30px;
           font-size: $font-size-medium;
           color: $color-text-l;
@@ -163,9 +162,9 @@ export default {
           vertical-align: top;
 
           .bg-face {
-            width: 24px;
+            width: 30px;
             border-radius: 50%;
-            margin-top: 10px;
+            margin-top: 7px;
           }
         }
       }

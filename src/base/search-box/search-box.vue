@@ -21,11 +21,6 @@ export default {
       default: null
     }
   },
-  computed: {
-    getBvid () {
-      return this.defaultWord.url
-    }
-  },
   created () {
     this.$watch('query', debounce((newQuery) => {
       this.$emit('query', newQuery)
@@ -34,6 +29,9 @@ export default {
   methods: {
     clear () {
       this.query = ''
+    },
+    setQuery (query) {
+      this.query = query
     }
   }
 }
