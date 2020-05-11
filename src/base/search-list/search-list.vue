@@ -1,12 +1,12 @@
 <template>
   <div class="search-list">
-    <ul>
-      <li class="search-item border-bottom" v-for="(item, index) in searches" :key="index" @click="selectItem(item)">
+    <transition-group tag="ul" name="list">
+      <li class="search-item border-bottom" v-for="item in searches" :key="item" @click="selectItem(item)">
         <i class="icon-lishijilu_huaban"></i>
         <span class="text">{{item}}</span>
         <i @click.stop="deleteItem(item)" class="icon-shanchu"></i>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -40,6 +40,15 @@ export default {
     align-items: center;
     height: 44px;
     line-height: 44px;
+
+    &.list-enter-active, &.list-leave-active {
+      transition: all 0.2s;
+    }
+
+    &.list-enter, &.list-leave-to {
+      height: 0;
+      opacity: 0;
+    }
 
     .icon-lishijilu_huaban {
       margin-right: 6px;

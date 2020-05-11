@@ -1,6 +1,6 @@
-# bili-vedio
+# bili-video
 
-> a vedio player
+> a video player
 
 ## Build Setup
 

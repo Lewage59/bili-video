@@ -1,7 +1,7 @@
 {
-  "name": "bili-vedio",
+  "name": "bili-video",
   "version": "1.0.0",
-  "description": "a vedio player",
+  "description": "a video player",
   "author": "Lewage59 <920576696@qq.com>",
   "private": true,
   "scripts": {
