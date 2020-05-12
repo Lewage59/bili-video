@@ -3,14 +3,14 @@
     <div class="suspension">
       <div class="suspension-box">
         <div class="navbar">
-          <div class="logo">
+          <div class="logo" @click="showConfirm">
             <i class="icon-theme"></i>
           </div>
           <router-link tag="div" to="/search" class="search-wrapper">
             <i class="icon-sousuo"></i>
             <span class="text">{{defaultWord}}</span>
           </router-link>
-          <div class="face">
+          <div class="face" @click="showConfirm">
             <img :src="noface" class="bg-face" />
           </div>
         </div>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-
+    <confirm ref="confirm" text="尚未开发"></confirm>
   </div>
 </template>
 
@@ -48,6 +48,7 @@ import Switcher from 'base/switcher/switcher'
 import noface from 'common/image/noface.gif'
 import { ERR_OK, regionTags } from 'api/config'
 import { getSearchDefaultWords } from 'api/search'
+import Confirm from 'base/confirm/confirm'
 
 export default {
   data () {
@@ -66,7 +67,8 @@ export default {
   },
   components: {
     Slider,
-    Switcher
+    Switcher,
+    Confirm
   },
   created () {
     this._getSearchDefaultWords()
@@ -92,6 +94,9 @@ export default {
     },
     toggleList () {
       this.toggleTab = !this.toggleTab
+    },
+    showConfirm () {
+      this.$refs.confirm.show()
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="search">
     <div class="header">
       <div class="search-box-wrapper">
-        <search-box ref="searchBox" :defaultWord="defaultWord" @query="changeQuery"></search-box>
+        <search-box ref="searchBox" :defaultWord="defaultWord" @query="changeQuery" @enter="saveSearch"></search-box>
       </div>
       <router-link to="/" class="cancel">取消</router-link>
     </div>
@@ -25,12 +25,13 @@
               </div>
             </div>
           </div>
-          <div class="search-result" v-show="query">
-            <suggest :query="query" @select="saveSearch"></suggest>
+          <div class="search-result" v-show="!showResult && query">
+            <suggest :query="query" @select="addQuery"></suggest>
           </div>
         </div>
       </scroll>
     </div>
+    <router-view @keyword="getCurrentKeyword"></router-view>
   </div>
 </template>
 
@@ -72,6 +73,9 @@ export default {
           this.hotwords = res.data.list
         }
       })
+    },
+    getCurrentKeyword (keyword) {
+      this.$refs.searchBox.setQuery(keyword)
     },
     ...mapActions([
       'clearSearchHistory'

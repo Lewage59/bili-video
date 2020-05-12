@@ -28,3 +28,35 @@ export function getSuggest (query) {
     return Promise.resolve(res)
   })
 }
+
+export function getResultList (keyword, page, pagesize) {
+  const url = '/proxyApi/x/web-interface/search/all/v2'
+  const data = {
+    keyword,
+    page,
+    pagesize
+  }
+
+  return axios(url, {
+    params: data
+  }).then(res => {
+    return Promise.resolve(res)
+  })
+}
+
+export function getResultTypeList (keyword, page, pagesize, type) {
+  const url = '/proxyApi/x/web-interface/search/type'
+  const data = {
+    keyword,
+    page,
+    pagesize,
+    order: type,
+    search_type: 'video'
+  }
+
+  return axios(url, {
+    params: data
+  }).then(res => {
+    return Promise.resolve(res)
+  })
+}

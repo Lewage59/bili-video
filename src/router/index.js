@@ -8,6 +8,7 @@ import Video from 'components/video/video'
 import Search from 'components/search/search'
 import Rank from 'components/rank/rank'
 import VideoList from 'components/video-list/video-list'
+import SearchResult from 'components/search-result/search-result'
 
 Vue.use(Router)
 
@@ -47,7 +48,13 @@ export default new Router({
     {
       name: 'search',
       path: '/search',
-      component: Search
+      component: Search,
+      children: [
+        {
+          path: ':keyword',
+          component: SearchResult
+        }
+      ]
     },
     {
       name: 'rank',

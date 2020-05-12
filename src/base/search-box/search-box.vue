@@ -1,7 +1,7 @@
 <template>
   <div class="search-box">
     <i class="icon-sousuo"></i>
-    <input ref="query" class="box" v-model="query" :placeholder="defaultWord.show_name">
+    <input ref="query" class="box" v-model="query" :placeholder="defaultWord.show_name" @keyup.enter="enterQuery">
     <i class="icon-shanchu" @click="clear" v-show="query"></i>
   </div>
 </template>
@@ -32,6 +32,9 @@ export default {
     },
     setQuery (query) {
       this.query = query
+    },
+    enterQuery () {
+      this.$emit('enter', this.query)
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="suggest">
     <ul class="suggest-list">
-      <li class="suggest-item border-bottom" @click="selectItem" v-for="(item, index) in result" :key="index" v-html="$options.filters.setHighlight(item.name, query)"></li>
+      <li class="suggest-item border-bottom" @click="selectItem(item)" v-for="(item, index) in result" :key="index" v-html="$options.filters.setHighlight(item.name, query)"></li>
     </ul>
   </div>
 </template>
@@ -31,8 +31,8 @@ export default {
         this.result = res.data
       })
     },
-    selectItem () {
-      this.$emit('select')
+    selectItem (item) {
+      this.$emit('select', item.name)
     }
   },
   filters: {

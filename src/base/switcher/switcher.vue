@@ -25,7 +25,14 @@ export default {
   },
   computed: {
     switcherType () {
-      return this.displayType === 'start' ? 'switcher-start' : 'switcher-around'
+      switch (this.displayType) {
+        case 'start':
+          return 'switcher-start'
+        case 'around':
+          return 'switcher-around'
+        case 'between':
+          return 'switcher-between'
+      }
     }
   },
   created () {
@@ -73,6 +80,12 @@ export default {
 
   &.switcher-start {
     justify-content: flex-start;
+  }
+
+  &.switcher-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .switcher-tab {

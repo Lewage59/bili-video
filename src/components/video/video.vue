@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div class="video" v-show="videoInfo && recommendList">
+    <div class="video" v-show="JSON.stringify(videoInfo) !== '{}'">
       <div class="navbar-video">
         <div class="navbar-box">
           <div class="back" @click="back ">

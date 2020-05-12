@@ -2,14 +2,14 @@
   <div class="video-list">
     <ul>
       <li @click="selectItem(item.bvid)" class="video-item" v-for="(item, index) in list" :key="index">
-        <div :class="getRankCls(index)">{{getRankText(index)}}</div>
+        <div v-if="rank" :class="getRankCls(index)">{{getRankText(index)}}</div>
         <div class="content">
           <div class="pic">
             <img v-lazy="item.pic">
             <span class="duration">{{item.duration}}</span>
           </div>
           <div class="info">
-            <p class="title">{{item.title}}</p>
+            <p class="title" v-html="item.title">{{item.title}}</p>
             <div class="author">
               <i class="icon-UPzhu"></i>
               {{item.author}}
@@ -39,6 +39,10 @@ export default {
     list: {
       type: Array,
       default: () => []
+    },
+    rank: {
+      type: Boolean,
+      default: false
     }
   },
   created () {
@@ -166,6 +170,11 @@ export default {
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
+
+            &>>>.keyword {
+              color: $color-theme;
+              font-style: normal;
+            }
           }
 
           .author {

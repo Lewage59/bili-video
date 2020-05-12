@@ -14,7 +14,7 @@
       </slider>
     </div>
     <scroll :data="rankList" :bounce="bounce" class="video-list-wrapper" ref="list">
-      <router-view @changeTab="changeTab" :list="rankList"></router-view>
+      <router-view @changeTab="changeTab" :list="rankList" :rank="rank"></router-view>
     </scroll>
   </div>
 </template>
@@ -32,7 +32,8 @@ export default {
       regionTags,
       indexTab: 0,
       rankList: [],
-      bounce: false
+      bounce: false,
+      rank: true
     }
   },
   created () {
