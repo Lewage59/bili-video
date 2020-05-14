@@ -32,17 +32,6 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: "commons",
-          chunks: "initial",
-          minChunks: 2
-        }
-      }
-    }
-  },
   plugins: [
     // make sure to include the plugin for the magic
     new VueLoaderPlugin()
