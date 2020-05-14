@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// 默认搜索词
 export function getSearchDefaultWords () {
   const url = '/proxyApi/x/web-interface/search/default'
 
@@ -8,6 +9,7 @@ export function getSearchDefaultWords () {
   })
 }
 
+// 搜索热词
 export function getHotWords () {
   const url = 'https://s.search.bilibili.com/main/hotword'
 
@@ -16,6 +18,7 @@ export function getHotWords () {
   })
 }
 
+// 搜索提示词
 export function getSuggest (query) {
   const url = '/proxyApi/suggest'
   const data = {
@@ -29,6 +32,7 @@ export function getSuggest (query) {
   })
 }
 
+// 搜索结果列表
 export function getResultList (keyword, page, pagesize) {
   const url = '/proxyApi/x/web-interface/search/all/v2'
   const data = {
@@ -44,6 +48,7 @@ export function getResultList (keyword, page, pagesize) {
   })
 }
 
+// 搜索结果列表排序方式
 export function getResultTypeList (keyword, page, pagesize, type) {
   const url = '/proxyApi/x/web-interface/search/type'
   const data = {

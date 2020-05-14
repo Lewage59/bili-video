@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// 分区视频
 export function getRegion (ps, rid) {
   const url = '/proxyApi/x/web-interface/dynamic/region'
   const data = {

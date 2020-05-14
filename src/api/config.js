@@ -9,6 +9,7 @@ export const sliderImage = [
   'https://i0.hdslb.com/bfs/archive/68cb764e2a9060623f2678928588fd1d5b3aae75.png@480w_270h'
 ]
 
+// 所有分区视频对应的tid或rid
 export const regionTags = [
   {
     name: '首页',

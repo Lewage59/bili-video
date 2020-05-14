@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+// 视频信息
 export function getVideoInfo (bvid) {
   const url = '/proxyApi/x/web-interface/view'
   const data = {
@@ -13,6 +14,7 @@ export function getVideoInfo (bvid) {
   })
 }
 
+// 单个视频推荐信息
 export function getRecommend (bvid) {
   const url = '/proxyApi/x/web-interface/archive/related'
   const data = {
@@ -26,6 +28,7 @@ export function getRecommend (bvid) {
   })
 }
 
+// 视频评论
 export function getComment (aid) {
   const url = '/proxyApi/x/v2/reply/main'
   const data = {
@@ -40,6 +43,7 @@ export function getComment (aid) {
   })
 }
 
+// 视频标签
 export function getTags (aid) {
   const url = '/proxyApi/x/tag/archive/tags'
   const data = {
