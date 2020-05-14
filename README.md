@@ -43,13 +43,19 @@
 ## 真实数据来源
  - 通过自己研究获取的部分视频数据
  - 由GitHub上的[SocialSisterYi](https://github.com/SocialSisterYi/bilibili-API-collect)提供的部分视频数据（感谢给我节省了大量工作量）
+ 
+本项目中所用的的数据接口：[项目数据接口](https://github.com/Lewage59/bili-video/blob/master/static/api.md)
+
+ 注：本项目所有使用到的api全部放在src/api文件夹中
 
 # 二、项目介绍
 ## 项目整体架构
-![在这里插入图片描述](https://user-gold-cdn.xitu.io/2020/5/14/1721117a6ac4503a?w=1647&h=1850&f=png&s=201510)
+
+![](https://user-gold-cdn.xitu.io/2020/5/14/17211d07273274fa?w=1690&h=1919&f=png&s=192419)
 这是项目大体目前期望的整体架构，可能在后续开发中还会变化。。。
 
 ## 目录结构
+这里只了介绍src文件夹中的内容
 ```javascript
 ├─api               //数据请求接口、相关函数和基础配置
 ├─base              //基础UI组件
@@ -238,7 +244,6 @@ export default {
 
 # 四、未来期望
 目前这个项目还有很多功能还未实现，所以在之后的时间里尽快将剩余功能实现，呈现出一个完善的webapp项目出来，同时我也非常乐意大家的star以及提pr的嘻嘻嘻，这个项目还在努力开发中。。。。
-
 
 # Build Setup
 
