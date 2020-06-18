@@ -114,7 +114,9 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    // 优化项目打包体积
+    new UglifyJsPlugin()
   ]
 })
 
