@@ -1,6 +1,6 @@
 <template>
-  <div class="channel-page" v-if="regionList.length">
-    <div class="content">
+  <div class="channel-page">
+    <div class="content" v-if="regionList.length">
       <div class="list-bar">
         <span class="title">热门推荐</span>
       </div>
@@ -23,29 +23,26 @@ import Loading from 'base/loading/loading'
 export default {
   data () {
     return {
+      indexTab: 0,
       sindexTab: 0,
-      regionTags,
-      regionList: []
-    }
-  },
-  props: {
-    indexTab: {
-      type: String | Number,
-      default: '0'
+      regionList: [],
+      regionTags
     }
   },
   created () {
     this._getsIndexTab()
   },
   methods: {
+    // 获取二级标签下标
     _getsIndexTab () {
       if (isNaN(this.$route.params.sindex)) {
         return
       }
+      this.indexTab = this.$route.params.index
       this.sindexTab = this.$route.params.sindex
-      this.$emit('sswitchTab', parseInt(this.sindexTab))
       this._getsRegion()
     },
+    // 获取分区视频
     _getsRegion () {
       let index = parseInt(this.indexTab)
       let sindex = parseInt(this.sindexTab)
@@ -58,13 +55,9 @@ export default {
         console.log(err)
       })
     },
+    // 跳转到视频播放详情页
     selectItem (item) {
       this.$router.push({ name: 'video', params: { bvid: item.bvid } })
-    }
-  },
-  watch: {
-    '$route' () {
-      this._getsIndexTab()
     }
   },
   components: {

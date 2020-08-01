@@ -29,7 +29,9 @@
         <div class="loading-container" v-show="!regionList">
           <loading title=""></loading>
         </div>
-        <router-view @sswitchTab="sswitchTab" :indexTab="indexTab"></router-view>
+        <keep-alive>
+          <router-view :indexTab="sindexTab" :key="key"></router-view>
+        </keep-alive>
         <div class="block-box"></div>
       </div>
     </scroll>
@@ -64,6 +66,9 @@ export default {
   computed: {
     getBlocks () {
       return regionTags[this.indexTab].blocks
+    },
+    key () {
+      return this.$route.fullPath
     }
   },
   methods: {
@@ -72,7 +77,7 @@ export default {
         this.indexTab = 0
       } else {
         this.indexTab = this.$route.params.index
-        this.sindexTab = 0
+        this.sindexTab = this.$route.params.sindex || 0
       }
       this.$emit('switchTab', parseInt(this.indexTab))
     },
@@ -103,6 +108,7 @@ export default {
           path: `/channel/${this.indexTab}`
         })
       } else {
+        this.sswitchTab(index)
         this.$router.push({
           path: `/channel/${this.indexTab}/${index}`
         })
