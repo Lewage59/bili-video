@@ -5,9 +5,9 @@
         <switcher :list="getBlocks" displayType="start" :indexTab="sindexTab" @switchTab="changeContent"></switcher>
       </slider>
     </div>
-    <scroll class="content-wrapper" ref="content" :data="sindexTab" :bounce="bounce">
+    <scroll class="content-wrapper" ref="content" :data="regionList" :bounce="bounce">
       <div>
-        <ul class="recommend" v-if="sindexTab === 0 && regionList">
+        <ul class="recommend" v-if="!$route.params.sindex && regionList">
           <li class="list-group" v-for="(list, index) in regionList" :key="index">
             <div class="list-bar">
               <span class="title">{{getRegionName(index)}}</span>
@@ -30,7 +30,7 @@
           <loading title=""></loading>
         </div>
         <keep-alive>
-          <router-view :indexTab="sindexTab" :key="key"></router-view>
+          <router-view :key="key"></router-view>
         </keep-alive>
         <div class="block-box"></div>
       </div>
@@ -79,7 +79,6 @@ export default {
         this.indexTab = this.$route.params.index
         this.sindexTab = this.$route.params.sindex || 0
       }
-      this.$emit('switchTab', parseInt(this.indexTab))
     },
     _getRegion () {
       if (!this.indexTab) {

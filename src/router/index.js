@@ -23,10 +23,16 @@ export default new Router({
       path: '/',
       component: Index,
       redirect: 'home',
+      meta: {
+        keepAlive: false // 不需要缓存
+      },
       children: [
         {
           path: 'home',
-          component: Home
+          component: Home,
+          meta: {
+            keepAlive: true // 需要缓存
+          }
         },
         {
           path: 'channel/:index',
@@ -36,19 +42,28 @@ export default new Router({
               path: ':sindex',
               component: ChannelPage
             }
-          ]
+          ],
+          meta: {
+            keepAlive: false
+          }
         }
       ]
     },
     {
       name: 'video',
       path: '/video/:bvid',
-      component: Video
+      component: Video,
+      meta: {
+        keepAlive: false
+      }
     },
     {
       name: 'search',
       path: '/search',
       component: Search,
+      meta: {
+        keepAlive: true
+      },
       children: [
         {
           path: ':keyword',
@@ -60,6 +75,9 @@ export default new Router({
       name: 'rank',
       path: '/rank',
       component: Rank,
+      meta: {
+        keepAlive: true
+      },
       children: [
         {
           path: ':index',

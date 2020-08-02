@@ -1,6 +1,6 @@
 <template>
   <div class="switcher" ref="switcher" :class="switcherType">
-    <div class="switcher-tab" v-for="(item, index) in list" :key="index" :class="{active : index === indexTab}" @click="switchTab(index)">
+    <div class="switcher-tab" v-for="(item, index) in list" :key="index" :class="{active : index == indexTab}" @click="switchTab(index)">
       <span>{{item.name}}</span>
     </div>
     <div ref="anchor" class="switcher-header-anchor"></div>

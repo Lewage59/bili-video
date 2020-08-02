@@ -13,3 +13,6 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+.editorconfig
+.eslintignore

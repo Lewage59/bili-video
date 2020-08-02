@@ -53,16 +53,11 @@ import Confirm from 'base/confirm/confirm'
 export default {
   data () {
     return {
+      indexTab: 0,
       noface,
       regionTags,
       defaultWord: '',
       toggleTab: false
-    }
-  },
-  props: {
-    indexTab: {
-      type: Number,
-      default: 0
     }
   },
   components: {
@@ -72,6 +67,7 @@ export default {
   },
   created () {
     this._getSearchDefaultWords()
+    this.indexTab = this.$route.params.index || 0
   },
   methods: {
     _getSearchDefaultWords () {
@@ -83,10 +79,12 @@ export default {
     },
     changeContent (index) {
       if (index === 0) {
+        this.indexTab = 0
         this.$router.push({
           path: '/home'
         })
       } else {
+        this.indexTab = index || this.$route.params.index
         this.$router.push({
           path: `/channel/${index}`
         })
@@ -98,6 +96,9 @@ export default {
     showConfirm () {
       this.$refs.confirm.show()
     }
+  },
+  activated () {
+    this.indexTab = 0
   }
 }
 </script>

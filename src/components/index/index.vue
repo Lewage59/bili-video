@@ -1,27 +1,18 @@
 <template>
   <div class="index">
-    <m-header :indexTab="indexTab"></m-header>
+    <m-header></m-header>
     <keep-alive>
-      <router-view @switchTab="switchTab"></router-view>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
     </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
   </div>
 </template>
 
 <script>
 import mHeader from 'components/m-header/m-header'
 export default {
-  data () {
-    return {
-      indexTab: 0
-    }
-  },
   components: {
     mHeader
-  },
-  methods: {
-    switchTab (index) {
-      this.indexTab = index
-    }
   }
 }
 </script>
