@@ -173,7 +173,7 @@ export default {
       this.switchList = [{ name: '相关推荐' }, { name: `评论 ${formatNumber(this.statCount.reply)}` }]
     },
     back () {
-      this.$router.go(-1)
+      this.$router.back()
     },
     selectItem (item) {
       this.$refs.content.scrollTo(0, 0)
