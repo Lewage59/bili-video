@@ -1,6 +1,6 @@
 <template>
-  <transition name="slide">
-    <div class="video" v-show="JSON.stringify(videoInfo) !== '{}'">
+  <div class="video">
+    <div class="video-container" v-show="JSON.stringify(videoInfo) !== '{}'">
       <div class="navbar-video">
         <div class="navbar-box">
           <div class="back" @click="back ">
@@ -88,7 +88,10 @@
         </div>
       </scroll>
     </div>
-  </transition>
+    <div v-show="JSON.stringify(videoInfo) === '{}'" class="loading-container">
+      <loading></loading>
+    </div>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -100,6 +103,7 @@ import CardList from 'base/card-list/card-list'
 import Scroll from 'base/scroll/scroll'
 import Tags from 'base/tags/tags'
 import Comment from 'components/comment/comment'
+import Loading from 'base/loading/loading'
 
 export default {
   data () {
@@ -205,7 +209,8 @@ export default {
     CardList,
     Scroll,
     Comment,
-    Tags
+    Tags,
+    Loading
   },
   watch: {
     '$route' (to, from) {
@@ -222,21 +227,27 @@ export default {
 @import '~common/stylus/variable.styl';
 @import '~common/stylus/mixin.styl';
 
-.slide-enter-active, .slide-leave-active {
-  transition: all 0.3s ease;
-}
-
-.slide-enter, .slide-leave-to {
-  transform: translateX(100%);
-  opacity: 0;
-}
-
+// 顶格块
 .block-box {
   width: 100%;
   padding-top: 44px;
 }
 
 .video {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100vh;
+
+  .loading-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.video-container {
   position: fixed;
   top: 0;
   left: 0;
