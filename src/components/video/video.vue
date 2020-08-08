@@ -1,16 +1,16 @@
 <template>
   <div class="video">
-    <div class="video-container" v-show="JSON.stringify(videoInfo) !== '{}'">
-      <div class="navbar-video">
-        <div class="navbar-box">
-          <div class="back" @click="back ">
-            <i class="icon-zuojiantou1"></i>
-          </div>
-          <router-link tag="div" to="/" class="logo ">
-            <i class="icon-bilibili-line"></i>
-          </router-link>
+    <div class="navbar-video">
+      <div class="navbar-box">
+        <div class="back" @click="back ">
+          <i class="icon-zuojiantou1"></i>
         </div>
+        <router-link tag="div" to="/" class="logo ">
+          <i class="icon-bilibili-line"></i>
+        </router-link>
       </div>
+    </div>
+    <div class="video-container" v-show="JSON.stringify(videoInfo) !== '{}'">
       <div class="block-box"></div>
       <scroll ref="content" class="video-content" :bounce="bounce" :data="recommendList">
         <div>
@@ -239,21 +239,6 @@ export default {
   left: 0;
   height: 100vh;
 
-  .loading-container {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
-
-.video-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
   .navbar-video {
     position: fixed;
     top: 0;
@@ -291,6 +276,21 @@ export default {
       }
     }
   }
+
+  .loading-container {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
   .video-content {
     position: relative;
